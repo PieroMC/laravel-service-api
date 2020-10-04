@@ -27,14 +27,17 @@
                         <h6 class="text-white text-uppercase">Login</h6>
                     </a>
                     <a class="ml-2" href="/register">
-                        <h6 class="text-white text-uppercase">
-                            Get Started
-                        </h6>
+                        <h6 class="text-white text-uppercase">REGISTER</h6>
                     </a>
                 </div>
             </div>
         </nav>
+
         <div class="banner-post container">
+            <div class="banner-post-img">
+                {{-- <img src="/img/welcome/main-illustration.svg" alt="welcome Illustration"> --}}
+                <img src="/img/welcome/home-banner-lary.svg" alt="welcome Illustration">
+            </div>
             <div class="banner-post-description text-white">
                 <h1 class="banner-post-description-title">
                     <strong class="inherits-color text-uppercase">welcome</strong><br />
@@ -45,7 +48,10 @@
                     Nobis minima quaerat pariatur eaque deserunt nisi id. Repellat, necessitatibus?
                 </p>
             </div>
-            <img src="/img/welcome/home-banner-lary.svg" alt="welcome Illustration">
+            <div class="banner-post-image">
+                <img src="/img/welcome/home-banner-lary.svg" alt="welcome Illustration">
+            </div>
+            
         </div>
     </div>
 </body>
