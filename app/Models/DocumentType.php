@@ -15,4 +15,12 @@ class DocumentType extends Model
      * @var array
      */
     protected $fillable = ['document'];
+
+    public function employees(){
+
+    	return $this->hasMany('App\Models\Employee');
+
+    }
+
+
 }

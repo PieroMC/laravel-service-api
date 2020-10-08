@@ -11,12 +11,13 @@ body {
     font-weight: 500;
     line-height: 1.428571428571429;
 }
+
 .banner {
     background-image: url("/img/welcome/home-bg-top.svg");
     height: 100vh;
     padding-bottom: 0;
     margin-bottom: 0;
-    .banner-nav {
+    .banner-nav{
         background: 0 0;
         padding-left: 40px;
         padding-right: 40px;
@@ -34,6 +35,7 @@ body {
                 }
             }
         }
+        
     }
     .banner-post {
         height: 80%;

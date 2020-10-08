@@ -14,7 +14,9 @@
     {{--<link href="//cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@3/dark.css" rel="stylesheet">
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@9/dist/sweetalert2.min.js"></script> --}}
 
-    <title>page</title>
+    <link rel="shortcut icon" href="/img/home-banner-lary.ico" type="image/x-icon">
+
+    <title>{{$name_page}} | TecShop</title>
 </head>
 
 <body>
@@ -23,9 +25,10 @@
     <div class="container">
 
         <div class="row contenedor">
-            <div class="col-5 contenedor-left">
-                <img src="/img/logo-color-0.png" alt="logo">
-                <p class="text-break">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Deleniti, quos?</p>
+            <div class="col-5 d-flex justify-content-center contenedor-left">
+                {{-- <img src="/img/logo-color-0.png" alt="logo"> --}}
+                <img class="d-block"  src="/img/welcome/home-banner-lary.svg" alt="welcome Illustration">
+                {{-- <p class="text-break">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Deleniti, quos?</p> --}}
             </div>
             <div class="col-7 contenedor-right ">
                 @yield('content')

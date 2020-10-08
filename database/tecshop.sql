@@ -493,11 +493,6 @@ ALTER TABLE `sales`
   ADD KEY `sales_user_id_foreign` (`user_id`),
   ADD KEY `sales_voucher_type_id_foreign` (`voucher_type_id`);
 
---
--- Indices de la tabla `sale_details`
---
-ALTER TABLE `sale_details`
-  ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `sale_products`
@@ -586,11 +581,6 @@ ALTER TABLE `product_categories`
 ALTER TABLE `sales`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
---
--- AUTO_INCREMENT de la tabla `sale_details`
---
-ALTER TABLE `sale_details`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `sale_products`

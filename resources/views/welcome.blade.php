@@ -22,14 +22,32 @@
                         </h4>
                     </a>
                 </div>
+
+                @auth
+                <div class="d-flex align-items-center justify-content-end">
+                    <a class="mr-2" href="/home">
+                        <h6 class="text-white text-uppercase">{{__('HOME')}}</h6>
+                    </a>
+                    <a class="ml-2" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                        <h6 class="text-white text-uppercase">{{__('logout')}}</h6>
+                    </a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                        @csrf
+                    </form>
+                </div>
+                @endauth
+
+                @guest
                 <div class="d-flex align-items-center justify-content-end">
                     <a class="mr-2" href="/login">
-                        <h6 class="text-white text-uppercase">Login</h6>
+                        <h6 class="text-white text-uppercase">{{__('Login')}}</h6>
                     </a>
                     <a class="ml-2" href="/register">
-                        <h6 class="text-white text-uppercase">REGISTER</h6>
+                        <h6 class="text-white text-uppercase">{{__('REGISTER')}}</h6>
                     </a>
                 </div>
+                @endguest
+
             </div>
         </nav>
 
@@ -51,7 +69,7 @@
             <div class="banner-post-image">
                 <img src="/img/welcome/home-banner-lary.svg" alt="welcome Illustration">
             </div>
-            
+
         </div>
     </div>
 </body>

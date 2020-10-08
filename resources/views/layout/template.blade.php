@@ -8,7 +8,8 @@
     <link rel="stylesheet" href="/css/plugins/bootstrap.min.css">
     <script src="https://kit.fontawesome.com/e466ec6b27.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="/css/main.css">
-    <title>Home</title>
+    <link rel="shortcut icon" href="/img/home-banner-lary.ico" type="image/x-icon">
+    <title>{{$page_name}} | TecShop</title>
 </head>
 
 <body class="app sidebar-mini">
@@ -24,14 +25,18 @@
 
             {{-- Notification Menu --}}
             <li class="dropdown">
-                <a class="app-nav__item" href="#" data-toggle="dropdown" aria-label="Show notifications"><i class="fa fa-bell-o fa-lg"></i></a>
+                <a class="app-nav__item" href="#" data-toggle="dropdown" aria-label="Show notifications"><i
+                        class="fa fa-bell-o fa-lg"></i></a>
                 <ul class="app-notification dropdown-menu dropdown-menu-right">
                     <li class="app-notification__title">
                         You have 4 new notifications.
                     </li>
                     <div class="app-notification__content">
                         <li>
-                            <a class="app-notification__item" href="javascript:;"><span class="app-notification__icon"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x text-primary"></i><i class="fa fa-envelope fa-stack-1x fa-inverse"></i></span></span>
+                            <a class="app-notification__item" href="javascript:;"><span
+                                    class="app-notification__icon"><span class="fa-stack fa-lg"><i
+                                            class="fa fa-circle fa-stack-2x text-primary"></i><i
+                                            class="fa fa-envelope fa-stack-1x fa-inverse"></i></span></span>
                                 <div>
                                     <p class="app-notification__message">
                                         Lisa sent you a mail
@@ -43,7 +48,10 @@
                             </a>
                         </li>
                         <li>
-                            <a class="app-notification__item" href="javascript:;"><span class="app-notification__icon"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x text-danger"></i><i class="fa fa-hdd-o fa-stack-1x fa-inverse"></i></span></span>
+                            <a class="app-notification__item" href="javascript:;"><span
+                                    class="app-notification__icon"><span class="fa-stack fa-lg"><i
+                                            class="fa fa-circle fa-stack-2x text-danger"></i><i
+                                            class="fa fa-hdd-o fa-stack-1x fa-inverse"></i></span></span>
                                 <div>
                                     <p class="app-notification__message">
                                         Mail server not working
@@ -55,7 +63,10 @@
                             </a>
                         </li>
                         <li>
-                            <a class="app-notification__item" href="javascript:;"><span class="app-notification__icon"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x text-success"></i><i class="fa fa-money fa-stack-1x fa-inverse"></i></span></span>
+                            <a class="app-notification__item" href="javascript:;"><span
+                                    class="app-notification__icon"><span class="fa-stack fa-lg"><i
+                                            class="fa fa-circle fa-stack-2x text-success"></i><i
+                                            class="fa fa-money fa-stack-1x fa-inverse"></i></span></span>
                                 <div>
                                     <p class="app-notification__message">
                                         Transaction complete
@@ -68,7 +79,10 @@
                         </li>
                         <div class="app-notification__content">
                             <li>
-                                <a class="app-notification__item" href="javascript:;"><span class="app-notification__icon"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x text-primary"></i><i class="fa fa-envelope fa-stack-1x fa-inverse"></i></span></span>
+                                <a class="app-notification__item" href="javascript:;"><span
+                                        class="app-notification__icon"><span class="fa-stack fa-lg"><i
+                                                class="fa fa-circle fa-stack-2x text-primary"></i><i
+                                                class="fa fa-envelope fa-stack-1x fa-inverse"></i></span></span>
                                     <div>
                                         <p class="app-notification__message">
                                             Lisa sent you a mail
@@ -80,7 +94,10 @@
                                 </a>
                             </li>
                             <li>
-                                <a class="app-notification__item" href="javascript:;"><span class="app-notification__icon"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x text-danger"></i><i class="fa fa-hdd-o fa-stack-1x fa-inverse"></i></span></span>
+                                <a class="app-notification__item" href="javascript:;"><span
+                                        class="app-notification__icon"><span class="fa-stack fa-lg"><i
+                                                class="fa fa-circle fa-stack-2x text-danger"></i><i
+                                                class="fa fa-hdd-o fa-stack-1x fa-inverse"></i></span></span>
                                     <div>
                                         <p class="app-notification__message">
                                             Mail server not working
@@ -92,7 +109,10 @@
                                 </a>
                             </li>
                             <li>
-                                <a class="app-notification__item" href="javascript:;"><span class="app-notification__icon"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x text-success"></i><i class="fa fa-money fa-stack-1x fa-inverse"></i></span></span>
+                                <a class="app-notification__item" href="javascript:;"><span
+                                        class="app-notification__icon"><span class="fa-stack fa-lg"><i
+                                                class="fa fa-circle fa-stack-2x text-success"></i><i
+                                                class="fa fa-money fa-stack-1x fa-inverse"></i></span></span>
                                     <div>
                                         <p class="app-notification__message">
                                             Transaction complete
@@ -113,16 +133,19 @@
 
             {{-- User Menu --}}
             <li class="dropdown">
-                <a class="app-nav__item" href="#" data-toggle="dropdown" aria-label="Open Profile Menu"><i class="fa fa-user fa-lg"></i></a>
+                <a class="app-nav__item" href="#" data-toggle="dropdown" aria-label="Open Profile Menu"><i
+                        class="fa fa-user fa-lg"></i></a>
                 <ul class="dropdown-menu settings-menu dropdown-menu-right">
                     <li>
                         <a class="dropdown-item" href="#"><i class="fa fa-cog fa-lg"></i> Settings</a>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="{{route('user.show', Auth::user()->id)}}"><i class="fa fa-user fa-lg"></i> Profile</a>
+                        <a class="dropdown-item" href="{{--route('user.show', Auth::user()->id)--}}"><i
+                                class="fa fa-user fa-lg"></i> Profile</a>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                        <a class="dropdown-item" href="{{ route('logout') }}"
+                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                             <i class="fa fa-sign-out fa-lg"></i>
                             {{ __('Logout') }}
                         </a>
@@ -141,13 +164,14 @@
 
     <aside class="app-sidebar">
         <div class="app-sidebar__user">
-            <img style="width: 3rem;" class="app-sidebar__user-avatar" src="/img/avatar/avatar-3.png" alt="User Image" />
+            <img class="app-sidebar__user-avatar" src="https://s3.amazonaws.com/uifaces/faces/twitter/jsa/48.jpg"
+                alt="User Image" />
             <div>
                 <p class="app-sidebar__user-name">
-                    {{ $em->name .' '.$em->lastname}}
+                    {{ $user->name .' '.$user->lastname }}
                 </p>
                 <p class="app-sidebar__user-designation">
-                    {{ $em->workstation->work}}
+                    {{ $user->workstation->work }}
                 </p>
             </div>
         </div>
@@ -172,13 +196,13 @@
                 </a>
                 <ul class="treeview-menu">
                     <li>
-                        <a class="treeview-item" href="{{ route('employee') }}"><i class="icon fa fa-user"></i>
+                        <a class="treeview-item" href="{{-- route('employee') --}}"><i class="icon fa fa-user"></i>
                             {{__('Employee')}}
                         </a>
-                        <a class="treeview-item" href="{{route('user')}}"><i class="icon fas fa-id-badge"></i>
+                        <a class="treeview-item" href="{{--route('user')--}}"><i class="icon fas fa-id-badge"></i>
                             {{__('Users')}}
                         </a>
-        
+
                     </li>
                 </ul>
             </li>
@@ -194,10 +218,10 @@
                 </a>
                 <ul class="treeview-menu">
                     <li>
-                    <a class="treeview-item" href="{{route('client')}}"><i class="icon fas fa-user-tie"></i>
+                        <a class="treeview-item" href="{{--route('client')--}}"><i class="icon fas fa-user-tie"></i>
                             {{__('Clients')}}
                         </a>
-                        <a class="treeview-item" href="{{route('sale')}}"><i class="icon fab fa-shopify"></i>
+                        <a class="treeview-item" href="{{--route('sale')--}}"><i class="icon fab fa-shopify"></i>
                             {{__('Make sale')}}
                         </a>
                     </li>
@@ -225,7 +249,7 @@
                 </ul>
             </li>
 
-            
+
 
             <!-- almacen -->
             <li class="treeview">
@@ -241,7 +265,7 @@
                         <a class="treeview-item" href="#"><i class=" icon fas fa-clipboard-list"></i>
                             {{__('Category')}}
                         </a>
-                        <a class="treeview-item" href="{{route('product')}}"><i class="icon fas fa-boxes"></i>
+                        <a class="treeview-item" href="{{--route('product')--}}"><i class="icon fas fa-boxes"></i>
                             {{__('Product')}}
                         </a>
                     </li>
@@ -261,53 +285,24 @@
         </ul>
     </aside>
     <main class="app-content">
+        <div class="app-title py-4">
+            <div>
+                <h1><i class="{{$page_icon}} mr-2"></i>{{$page_name}}</h1>
+            </div>
+            <ul class="app-breadcrumb breadcrumb">
+                <li class="breadcrumb-item">{{$page_name}}</li>
+                <li class="breadcrumb-item"><a href="#">{{$page_subpage}}</a></li>
+            </ul>
+        </div>
+
         @yield('content')
     </main>
-
-
     <!-- Essential javascripts for application to work-->
     <script src="/js/jquery-3.3.1.min.js"></script>
     <script src="/js/popper.min.js"></script>
     <script src="/js/bootstrap.min.js"></script>
     <script src="/js/main.js"></script>
-    <!-- The javascript plugin to display page loading on top-->
-    <script src="/js/pace.min.js"></script>
-    <!-- Page specific javascripts-->
-    <script type="text/javascript" src="/js/plugins/bootstrap-datepicker.min.js"></script>
-    <script type="text/javascript" src="/js/plugins/select2.min.js"></script>
-    <script type="text/javascript" src="/js/plugins/bootstrap-datepicker.min.js"></script>
-    <script type="text/javascript" src="/js/plugins/dropzone.js"></script>
-    <!-- Data table plugin-->
-    <script type="text/javascript" src="/js/jquery.dataTables.min.js"></script>
-    <script type="text/javascript" src="/js/dataTables.bootstrap.min.js"></script>
-
-    <script type="text/javascript">
-        $('#sampleTable').DataTable();
-    </script>
-    <script type="text/javascript">
-        $('#sl').on('click', function() {
-            $('#tl').loadingBtn();
-            $('#tb').loadingBtn({
-                text: "Signing In"
-            });
-        });
-
-        $('#el').on('click', function() {
-            $('#tl').loadingBtnComplete();
-            $('#tb').loadingBtnComplete({
-                html: "Sign In"
-            });
-        });
-
-        $('#demoDate').datepicker({
-            format: "yyyy/mm/dd"
-            , autoclose: true
-            , todayHighlight: true
-        });
-
-        $('#demoSelect').select2();
-        // $('#products').select2();
-    </script>
     @yield('script')
 </body>
+
 </html>

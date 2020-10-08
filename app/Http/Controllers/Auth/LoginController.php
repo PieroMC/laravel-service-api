@@ -48,4 +48,11 @@ class LoginController extends Controller
         return 'name';
     }
 
+    public function showLoginForm()
+    {
+        $name_page = "Login"; 
+   
+     
+        return view('auth.login', compact('name_page'));
+    }
 }
