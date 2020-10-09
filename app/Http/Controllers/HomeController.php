@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\Employee;
 use App\Models\User;
 use Auth;
+use DB;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -29,7 +30,6 @@ class HomeController extends Controller
         $page_name = "Home";
         $page_subpage = "Dashboard";
         $page_icon ="fa fa-home";
-        
         $auth = Auth::user();
         $employees = Employee::all();
         foreach ($employees as $key) {
@@ -37,9 +37,24 @@ class HomeController extends Controller
                 $user = $key;
             }
         }
-
-        return view('home', compact("user", "page_name","page_subpage", "page_icon"));
+        $id = $auth->id;
+        $data = DB::select('CALL monthly_sales('.$id.')');
+        return view('home', compact("user", "data", "page_name","page_subpage", "page_icon"));
     }
 
- 
+    // public function chart(Request $request)
+    // {
+    //     $auth = Auth::user();
+    //     $id = $auth->id;
+    //     $mes = date("m");
+    //     $data = array();
+       
+    //     $data = DB::select('CALL monthly_sales('.$id.')');
+        
+       
+    //     // return $data;
+  
+    //     return response(json_encode($data),200)->header('Content-type', 'text/plain');
+    // }
+
 }
