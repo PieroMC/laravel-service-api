@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="row d-flex justify-content-center">
-    @if ($user->workstation->work == "ADMINISTRATOR")
+   
     <div class="col-md-10">
         <div class="tile">
             <h3 class="tile-title">Monthly Sales</h3>
@@ -23,9 +23,6 @@
     <div>
 
     </div>
-    @else
-
-    @endif
     <form action="" method="post" id="form-request">
         @csrf
         <input type="hidden" name="id" value="{{$user->id}}">
@@ -108,11 +105,4 @@ $(document).ready(function () {
     renderChart()
 });
 </script>
-{{-- <script type="text/javascript">
-    var ctxl = $("#Monthly_Sales").get(0).getContext("2d");
-    var lineChart = new Chart(ctxl).Line(data);
-
-    var ctxp = $("#barChartDemo").get(0).getContext("2d");
-    var pieChart = new Chart(ctxp).Bar(data);
-</script> --}}
 @endsection

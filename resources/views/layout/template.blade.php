@@ -184,7 +184,7 @@
                     </span>
                 </a>
             </li>
-
+            @if ($user->workstation->work == "ADMINISTRATOR")          
             <!-- usuarios -->
             <li class="treeview">
                 <a class="app-menu__item" href="#" data-toggle="treeview">
@@ -196,7 +196,7 @@
                 </a>
                 <ul class="treeview-menu">
                     <li>
-                        <a class="treeview-item" href="{{-- route('employee') --}}"><i class="icon fa fa-user"></i>
+                        <a class="treeview-item" href="{{ route('employee') }}"><i class="icon fa fa-user"></i>
                             {{__('Employee')}}
                         </a>
                         <a class="treeview-item" href="{{--route('user')--}}"><i class="icon fas fa-id-badge"></i>
@@ -206,7 +206,8 @@
                     </li>
                 </ul>
             </li>
-
+            @endif
+            @if ($user->workstation->work == "ADMINISTRATOR" || $user->workstation->work == "SELLER")
             <!-- ventas -->
             <li class="treeview">
                 <a class="app-menu__item" href="#" data-toggle="treeview">
@@ -227,7 +228,8 @@
                     </li>
                 </ul>
             </li>
-
+            @endif
+             @if ($user->workstation->work == "ADMINISTRATOR" || $user->workstation->work == "BUYER")
             <!-- compras -->
             <li class="treeview">
                 <a class="app-menu__item" href="#" data-toggle="treeview">
@@ -248,9 +250,9 @@
                     </li>
                 </ul>
             </li>
+            @endif
 
-
-
+            @if ($user->workstation->work == "ADMINISTRATOR" || $user->workstation->work == "WAREHOUSE")
             <!-- almacen -->
             <li class="treeview">
                 <a class="app-menu__item" href="#" data-toggle="treeview">
@@ -271,8 +273,8 @@
                     </li>
                 </ul>
             </li>
-
-            <!-- reportes -->
+            @endif
+            <!-- reportes 
             <li>
                 <a class="app-menu__item" href="#">
                     <i class="app-menu__icon far fa-file-alt"></i>
@@ -280,8 +282,7 @@
                         Reportes
                     </span>
                 </a>
-            </li>
-
+            </li>-->
         </ul>
     </aside>
     <main class="app-content">
@@ -297,11 +298,12 @@
 
         @yield('content')
     </main>
-    <!-- Essential javascripts for application to work-->
+    
     <script src="/js/jquery-3.3.1.min.js"></script>
     <script src="/js/popper.min.js"></script>
     <script src="/js/bootstrap.min.js"></script>
     <script src="/js/main.js"></script>
+    <!-- Essential javascripts for application to work-->
     @yield('script')
 </body>
 
