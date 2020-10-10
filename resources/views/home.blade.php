@@ -108,11 +108,4 @@ $(document).ready(function () {
     renderChart()
 });
 </script>
-{{-- <script type="text/javascript">
-    var ctxl = $("#Monthly_Sales").get(0).getContext("2d");
-    var lineChart = new Chart(ctxl).Line(data);
-
-    var ctxp = $("#barChartDemo").get(0).getContext("2d");
-    var pieChart = new Chart(ctxp).Bar(data);
-</script> --}}
 @endsection

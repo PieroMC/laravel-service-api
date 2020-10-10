@@ -4,7 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Employee;
 use Illuminate\Http\Request;
-
+use App\Models\User;
+use App\Models\DocumentType;
+use App\Models\Workstation;
+use Auth;
+use DB;
 class EmployeeController extends Controller
 {
     /**
@@ -14,7 +18,20 @@ class EmployeeController extends Controller
      */
     public function index()
     {
-        //
+        $page_name = "Employee";
+        $page_subpage = "All";
+        $page_icon ="fa fa-users";
+        $auth = Auth::user();
+        $employees = Employee::all();
+        foreach ($employees as $key) {
+            if ($key->id == $auth->employee_id) {
+                $user = $key;
+            }
+        }
+
+        //return User::find(1)->employee->name;
+        //return Employee::find(1)->user->name;
+        return view('employee.index',compact("user","employees","page_name","page_subpage", "page_icon"));
     }
 
     /**
@@ -24,7 +41,22 @@ class EmployeeController extends Controller
      */
     public function create()
     {
-        //
+        
+        $page_name = "Employee";
+        $page_subpage = "create";
+        $page_icon ="fa fa-user-plus";
+        $auth = Auth::user();
+        $employees = Employee::all();
+        foreach ($employees as $key) {
+            if ($key->id == $auth->employee_id) {
+                $user = $key;
+            }
+        }
+
+        $document_type = DocumentType::all();
+        $workstation = Workstation::all();
+        return view('employee.create',compact("user", "workstation","document_type","page_name","page_subpage", "page_icon"));
+
     }
 
     /**
