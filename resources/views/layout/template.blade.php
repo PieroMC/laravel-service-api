@@ -229,7 +229,9 @@
                 </ul>
             </li>
             @endif
+
              @if ($user->workstation->work == "ADMINISTRATOR" || $user->workstation->work == "BUYER")
+
             <!-- compras -->
             <li class="treeview">
                 <a class="app-menu__item" href="#" data-toggle="treeview">
@@ -252,7 +254,9 @@
             </li>
             @endif
 
+
             @if ($user->workstation->work == "ADMINISTRATOR" || $user->workstation->work == "WAREHOUSE")
+
             <!-- almacen -->
             <li class="treeview">
                 <a class="app-menu__item" href="#" data-toggle="treeview">
@@ -274,7 +278,11 @@
                 </ul>
             </li>
             @endif
+
             <!-- reportes 
+
+            
+
             <li>
                 <a class="app-menu__item" href="#">
                     <i class="app-menu__icon far fa-file-alt"></i>

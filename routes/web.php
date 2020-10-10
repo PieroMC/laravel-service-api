@@ -25,5 +25,9 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 // ### Route Employee
 // --------------------------
 Route::get('/employee', [App\Http\Controllers\EmployeeController::class, 'index'])->name('employee');
+
 Route::get('/employee/create', [App\Http\Controllers\EmployeeController::class, 'create'])->name('employee.create');
 Route::post('employee/store', [App\Http\Controllers\EmployeeController::class, 'store'])->name('employee.store');
+
+Route::get('/employee/create', [App\Http\Controllers\EmployeeController::class, 'create'])->name('employee.create');
+

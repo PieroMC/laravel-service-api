@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Employee;
 use Illuminate\Http\Request;
+
 use Illuminate\Support\Facades\Hash;
+
 use App\Models\User;
 use App\Models\DocumentType;
 use App\Models\Workstation;
@@ -27,6 +29,7 @@ class EmployeeController extends Controller
         foreach ($employees as $key) {
             if ($key->id == $auth->employee_id) {
                 $user = $key;
+
             }
         }
 
