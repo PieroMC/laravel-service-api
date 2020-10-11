@@ -38,7 +38,14 @@ class HomeController extends Controller
             }
         }
         $id = $auth->id;
-        $data = DB::select('CALL monthly_sales('.$id.')');
+
+        if(User::find($id)->employee->workstation->work == "ADMINISTRATOR"){
+            $data = DB::select('CALL total_monthly_sales()');
+        }else{
+            $data = DB::select('CALL monthly_sales('.$id.')');
+        }
+
+        
         return view('home', compact("user", "data", "page_name","page_subpage", "page_icon"));
     }
 

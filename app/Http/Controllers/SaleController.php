@@ -4,9 +4,30 @@ namespace App\Http\Controllers;
 
 use App\Models\Sale;
 use Illuminate\Http\Request;
+use Auth;
+use App\Models\SaleDetail;
+use App\Models\Employee;
+use App\Models\Product;
+use App\Models\ProductCategory;
+use App\Models\VoucherType;
+use App\Models\Client;
+
 
 class SaleController extends Controller
 {
+
+
+     /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+
     /**
      * Display a listing of the resource.
      *
@@ -15,6 +36,24 @@ class SaleController extends Controller
     public function index()
     {
         //
+        $page_name = "Sale";
+        $page_subpage = "Make Sale";
+        $page_icon ="fab fa-shopify";
+        $auth = Auth::user();
+        $employees = Employee::all();
+        foreach ($employees as $key) {
+            if ($key->id == $auth->employee_id) {
+                $user = $key;
+
+            }
+        }
+
+        $clients = Client::all();
+        $vouchers = VoucherType::all();
+        $categories = ProductCategory::all();
+        $products = Product::all();
+        return view('sale.makeSale', compact('user', 'products', 'categories', 'vouchers', 'clients',"page_name","page_subpage", "page_icon"));
+
     }
 
     /**
@@ -36,6 +75,49 @@ class SaleController extends Controller
     public function store(Request $request)
     {
         //
+        $products = $request->list_products;
+        $quantities = $request->list_quantity;
+    
+        $total = 0;
+        for ($i=0; $i <  sizeof($products) ; $i++) { 
+            $total += $products[$i] * $quantities[$i]; 
+            Product::find($products[$i])->update([
+                'stock' =>  Product::find($products[$i])->stock - $quantities[$i],
+            ]);
+        }
+        $count = Sale::all()->count();
+        if($count < 10){
+            $code = "00000". ($count + 1);
+        }else if($count < 100){
+            $code += "0000".($count + 1);
+        }else if($count < 1000){
+            $code = "000". ($count + 1);
+        }else if($count < 10000){
+            $code = "00". ($count + 1);
+        }else if($count < 100000){
+            $code = "0". ($count + 1);
+        }
+        $sale = Sale::create([
+            'code' => $code,
+            'date' => date("Y-m-d"),
+            'client_id' => $request->client,
+            'user_id' => Auth::user()->id,
+            'voucher_type_id' => $request->voucher,
+            'total' => $total,
+        ]);
+        
+        for ($i=0; $i < sizeof($products); $i++) { 
+            
+            $sale_product = SaleDetail::create([
+                'sale_id' => $sale->id, 
+                'product_id' => $products[$i], 
+                'quantity' => $quantities[$i],
+                'amount' => (Product::find($products[$i])->unit_price * $quantities[$i])
+            ]);
+        }
+
+        return redirect()->route('home');
+       
     }
 
     /**

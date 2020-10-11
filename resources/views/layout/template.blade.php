@@ -136,11 +136,11 @@
                 <a class="app-nav__item" href="#" data-toggle="dropdown" aria-label="Open Profile Menu"><i
                         class="fa fa-user fa-lg"></i></a>
                 <ul class="dropdown-menu settings-menu dropdown-menu-right">
-                    <li>
+                    {{-- <li>
                         <a class="dropdown-item" href="#"><i class="fa fa-cog fa-lg"></i> Settings</a>
-                    </li>
+                    </li> --}}
                     <li>
-                        <a class="dropdown-item" href="{{--route('user.show', Auth::user()->id)--}}"><i
+                        <a class="dropdown-item" href="{{ route('user.profile', $user->id) }}"><i
                                 class="fa fa-user fa-lg"></i> Profile</a>
                     </li>
                     <li>
@@ -199,7 +199,7 @@
                         <a class="treeview-item" href="{{ route('employee') }}"><i class="icon fa fa-user"></i>
                             {{__('Employee')}}
                         </a>
-                        <a class="treeview-item" href="{{--route('user')--}}"><i class="icon fas fa-id-badge"></i>
+                        <a class="treeview-item" href="{{route('user')}}"><i class="icon fas fa-id-badge"></i>
                             {{__('Users')}}
                         </a>
 
@@ -222,7 +222,7 @@
                         <a class="treeview-item" href="{{--route('client')--}}"><i class="icon fas fa-user-tie"></i>
                             {{__('Clients')}}
                         </a>
-                        <a class="treeview-item" href="{{--route('sale')--}}"><i class="icon fab fa-shopify"></i>
+                        <a class="treeview-item" href="{{route('sale')}}"><i class="icon fab fa-shopify"></i>
                             {{__('Make sale')}}
                         </a>
                     </li>
@@ -230,7 +230,7 @@
             </li>
             @endif
 
-             @if ($user->workstation->work == "ADMINISTRATOR" || $user->workstation->work == "BUYER")
+            {{--@if ($user->workstation->work == "ADMINISTRATOR" || $user->workstation->work == "BUYER")
 
             <!-- compras -->
             <li class="treeview">
@@ -253,7 +253,7 @@
                 </ul>
             </li>
             @endif
-
+            --}}
 
             @if ($user->workstation->work == "ADMINISTRATOR" || $user->workstation->work == "WAREHOUSE")
 
@@ -271,7 +271,7 @@
                         <a class="treeview-item" href="#"><i class=" icon fas fa-clipboard-list"></i>
                             {{__('Category')}}
                         </a>
-                        <a class="treeview-item" href="{{--route('product')--}}"><i class="icon fas fa-boxes"></i>
+                        <a class="treeview-item" href="{{route('product')}}"><i class="icon fas fa-boxes"></i>
                             {{__('Product')}}
                         </a>
                     </li>

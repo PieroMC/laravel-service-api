@@ -1,3 +1,5 @@
+
+
 DROP  database if EXISTS tecshop;
 CREATE database tecshop;
 use tecshop;
@@ -170,8 +172,7 @@ CREATE TABLE sales (
 --
 -- Estructura de tabla para la tabla `sale_products`
 --
-
-CREATE TABLE sale_products (
+CREATE TABLE sale_details (
   id int(10) NOT NULL PRIMARY KEY AUTO_INCREMENT,
   sale_id int(10)  NOT NULL,
   product_id int(10)  NOT NULL,
@@ -185,3 +186,11 @@ CREATE TABLE sale_products (
   FOREIGN KEY (product_id) REFERENCES products(id),
   FOREIGN KEY (sale_id) REFERENCES sales (id)
 ) ;
+
+CREATE PROCEDURE monthly_sales (IN `iduser` INT) 
+SELECT MONTHNAME(date) AS month, COUNT(*) AS quantity FROM sales WHERE sales.user_id = iduser GROUP BY(MONTH(date)); 
+
+
+CREATE PROCEDURE total_monthly_sales () 
+SELECT MONTHNAME(date) AS month, COUNT(*) AS quantity FROM sales GROUP BY(MONTH(date))
+
