@@ -11,8 +11,8 @@ use App\Models\Product;
 use App\Models\ProductCategory;
 use App\Models\VoucherType;
 use App\Models\Client;
-
-
+use App\Models\User;
+use DB;
 class SaleController extends Controller
 {
 
@@ -89,7 +89,7 @@ class SaleController extends Controller
         if($count < 10){
             $code = "00000". ($count + 1);
         }else if($count < 100){
-            $code += "0000".($count + 1);
+            $code = "0000".($count + 1);
         }else if($count < 1000){
             $code = "000". ($count + 1);
         }else if($count < 10000){
@@ -115,8 +115,7 @@ class SaleController extends Controller
                 'amount' => (Product::find($products[$i])->unit_price * $quantities[$i])
             ]);
         }
-
-        return redirect()->route('home');
+        return redirect()->route('invoice', ['sale' => $sale]);
        
     }
 
@@ -129,6 +128,26 @@ class SaleController extends Controller
     public function show(Sale $sale)
     {
         //
+        $voucher = $sale->voucher_type;
+        $page_name = $voucher->type;
+        $page_subpage = "preview";
+        $page_icon ="fa fa-file-text-o";
+        $auth = Auth::user();
+        $employees = Employee::all();
+        foreach ($employees as $key) {
+            if ($key->id == $auth->employee_id) {
+                $user = $key;
+
+            }
+        }
+
+        $employee = $sale->user->employee;
+        $client = $sale->client;
+        $details = SaleDetail::all();
+        $data = DB::select('select * from sale_details where sale_id  = ?', [$sale->id]);
+
+        // return $data;
+        return view('sale.invoice', compact('user','data', 'details', 'sale',"page_name","page_subpage", "page_icon"));
     }
 
     /**
@@ -137,10 +156,23 @@ class SaleController extends Controller
      * @param  \App\Models\Sale  $sale
      * @return \Illuminate\Http\Response
      */
-    public function edit(Sale $sale)
+    public function print(Sale $sale)
     {
         //
+     
+        $voucher = $sale->voucher_type;
+        $employee = $sale->user->employee;
+        $client = $sale->client;
+        $details = SaleDetail::all();
+        $data = DB::select('select * from sale_details where sale_id  = ?', [$sale->id]);
+        // return $sale;
+        // return view('sale.print', compact('data', 'details', 'sale'));
+        $pdf = \PDF::loadView('sale.print', compact('data', 'details', 'sale'));
+        return $pdf->stream('archivo.pdf');
     }
+
+
+
 
     /**
      * Update the specified resource in storage.

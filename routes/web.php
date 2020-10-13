@@ -50,3 +50,5 @@ Route::post('products/store', [App\Http\Controllers\ProductController::class, 's
 // --------------------------
 Route::get('sale/', [App\Http\Controllers\SaleController::class, 'index'])->name('sale');
 Route::post('sale/store', [App\Http\Controllers\SaleController::class, 'store'])->name('sale.store');
+Route::get('invoice/{sale}', [App\Http\Controllers\SaleController::class, 'show'])->name('invoice');
+Route::get('print/{sale}', [App\Http\Controllers\SaleController::class, 'print'])->name('print');

@@ -48,8 +48,8 @@ INSERT INTO workstations () VALUES
 
 
 INSERT INTO voucher_types () VALUES
-(NULL, 'BOLETA', '2020-09-20 00:12:42', '2020-09-20 00:12:42'),
-(NULL, 'FACTURA', '2020-09-20 00:12:42', '2020-09-20 00:12:42');
+(NULL, 'Ticket', '2020-09-20 00:12:42', '2020-09-20 00:12:42'),
+(NULL, 'Invoice', '2020-09-20 00:12:42', '2020-09-20 00:12:42');
 
 
 INSERT INTO document_types () VALUES

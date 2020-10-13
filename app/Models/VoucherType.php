@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class VoucherType extends Model
 {
     use HasFactory;
+
+
+    public function sales(){
+
+    	return $this->hasMany('App\Models\Sale');
+
+    }
 }

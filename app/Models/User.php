@@ -47,6 +47,9 @@ class User extends Authenticatable
         return $this->belongsTo('App\Models\Employee');
     }
 
-
+    public function sale()
+    {
+        return $this->hasOne('App\Models\Sale');
+    }
 
 }

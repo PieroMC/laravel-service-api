@@ -26,5 +26,10 @@ class Product extends Model
         return $this->belongsTo('App\Models\Brand');
     }
 
+    public function sale_details(){
+
+    	return $this->hasMany('App\Models\SaleDetail');
+
+    }
 
 }

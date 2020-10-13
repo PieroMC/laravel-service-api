@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Client extends Model
 {
     use HasFactory;
+
+
+    public function sale()
+    {
+        return $this->hasOne('App\Models\Sale');
+    }
+
 }

@@ -12,4 +12,11 @@ class SaleDetail extends Model
         'sale_id', 'product_id', 
         'quantity', 'amount'
     ];
+
+    public function product(){
+
+        return $this->belongsTo('App\Models\Product');
+    }
+
+
 }
