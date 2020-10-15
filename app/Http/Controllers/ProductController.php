@@ -18,10 +18,7 @@ class ProductController extends Controller
        *
        * @return void
     */
-    public function __construct()
-    {
-      $this->middleware('auth');
-    }
+   
 
 
 
@@ -132,5 +129,10 @@ class ProductController extends Controller
     public function destroy(Product $product)
     {
         //
+    }
+
+    public function ListaProducto(){
+        $producto = Product::all();
+        return response()->json($producto);
     }
 }
