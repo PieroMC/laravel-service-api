@@ -72,17 +72,10 @@ class SaleController extends Controller
     public function store(Request $request)
     {
         //
-        
-        $products = $request->list_products;
-        $quantities = $request->list_quantity;
-    
-        $total = 0;
-        for ($i=0; $i <  sizeof($products) ; $i++) { 
-            $total += $products[$i] * $quantities[$i]; 
-            Product::find($products[$i])->update([
-                'stock' =>  Product::find($products[$i])->stock - $quantities[$i],
-            ]);
-        }
+        // voucher, client,product,quantity
+                 
+        $total = (Product::find($request->product)->unit_price * $request->quantity);
+
         $count = Sale::all()->count();
         if($count < 10){
             $code = "00000". ($count + 1);
@@ -108,12 +101,11 @@ class SaleController extends Controller
             
             $sale_product = SaleDetail::create([
                 'sale_id' => $sale->id, 
-                'product_id' => $products[$i], 
-                'quantity' => $quantities[$i],
-                'amount' => (Product::find($products[$i])->unit_price * $quantities[$i])
+                'product_id' => $request->product, 
+                'quantity' => $request->quantity,
+                'amount' => $total
             ]);
         }
-        return $sale;
         return redirect()->route('invoice', ['sale' => $sale]);
        
     }
