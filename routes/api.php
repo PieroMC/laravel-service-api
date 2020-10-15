@@ -19,7 +19,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::get('/productos', [App\Http\Controllers\ProductController::class, 'ListaProducto'])->name('productos');
-
+Route::get('/reportsale', [App\Http\Controllers\SaleController::class, 'ReportSale'])->name('reportsale');
 Route::get('/clientes', [App\Http\Controllers\ClientController::class, 'ListaCliente'])->name('clientes');
 
 Route::get('/sale', [App\Http\Controllers\SaleController::class, 'index'])->name('sale');

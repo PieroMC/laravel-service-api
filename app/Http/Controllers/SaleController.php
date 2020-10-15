@@ -72,6 +72,7 @@ class SaleController extends Controller
     public function store(Request $request)
     {
         //
+        
         $products = $request->list_products;
         $quantities = $request->list_quantity;
     
@@ -98,7 +99,7 @@ class SaleController extends Controller
             'code' => $code,
             'date' => date("Y-m-d"),
             'client_id' => $request->client,
-            'user_id' => Auth::user()->id,
+            'user_id' => 1,
             'voucher_type_id' => $request->voucher,
             'total' => $total,
         ]);
@@ -112,6 +113,7 @@ class SaleController extends Controller
                 'amount' => (Product::find($products[$i])->unit_price * $quantities[$i])
             ]);
         }
+        return $sale;
         return redirect()->route('invoice', ['sale' => $sale]);
        
     }
@@ -193,4 +195,10 @@ class SaleController extends Controller
     {
         //
     }
+
+    public function ReportSale(){
+        $venta = Sale::all();
+        return response()->json($venta);
+    }
+
 }

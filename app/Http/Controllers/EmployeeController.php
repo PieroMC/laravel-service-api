@@ -45,9 +45,6 @@ class EmployeeController extends Controller
 
             }
         }
-
-        //return User::find(1)->employee->name;
-        //return Employee::find(1)->user->name;
         return view('employee.index',compact("user","employees","page_name","page_subpage", "page_icon"));
     }
 
@@ -133,6 +130,24 @@ class EmployeeController extends Controller
     public function edit(Employee $employee)
     {
         //
+
+        // return $employee;
+
+        $page_name = "Employee";
+        $page_subpage = "eidt";
+        $page_icon ="fa fa-user-edit";
+        $auth = Auth::user();
+        $employees = Employee::all();
+        foreach ($employees as $key) {
+            if ($key->id == $auth->employee_id) {
+                $user = $key;
+            }
+        }
+
+        $document_type = DocumentType::all();
+        $workstation = Workstation::all();
+        return view('employee.edit',compact("user", "employee", "workstation","document_type","page_name","page_subpage", "page_icon"));
+
     }
 
     /**
@@ -145,6 +160,8 @@ class EmployeeController extends Controller
     public function update(Request $request, Employee $employee)
     {
         //
+        Employee::find($employee->id)->update($request->all());
+        return redirect()->route('employee');
     }
 
     /**
@@ -156,5 +173,15 @@ class EmployeeController extends Controller
     public function destroy(Employee $employee)
     {
         //
+        $log = Auth::user();
+        $users = User::all();
+
+        foreach ($users as $value) {
+            if($value->employee->id == $employee->id){
+                User::find($value->id)->delete();
+            }
+        }
+
+        return redirect()->route('employee');
     }
 }
