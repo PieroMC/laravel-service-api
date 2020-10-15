@@ -135,4 +135,9 @@ class UserController extends Controller
     {
         //
     }
+
+    public function Usuario($id){
+        $usuario = User::find($id);
+        return response()->json($usuario);
+    }
 }
